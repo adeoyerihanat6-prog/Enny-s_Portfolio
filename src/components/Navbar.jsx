@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import logo from "../assets/images/enny.jpeg"; 
+
 const navLinks = [
+  
   { name: "Work", href: "#work" },
   { name: "Services", href: "#services" },
   { name: "About", href: "#about" },
+  { name: "Tools", href: "#tools"},
+  { name: "Testimonials", href: "#testimonials"},
   { name: "Contact", href: "#contact" },
 ];
 
