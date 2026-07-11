@@ -268,7 +268,7 @@
 
 
 // import heroVideo from "../assets/video/hero.mp4";
-// import heroPoster from "../assets/images/hero-poster.jpg";
+import heroPoster from "../assets/images/poster.png";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { FiPlay, FiArrowDown } from "react-icons/fi";
@@ -277,7 +277,7 @@ function Home() {
   return (
     <section
       id="home"
-      className="relative h-screen overflow-hidden bg-black"
+      className="relative min-h-[100svh] overflow-hidden bg-black"
     >
       {/* Background Video */}
       {/* <video
@@ -298,8 +298,7 @@ function Home() {
       <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/10 blur-[180px]" />
 
       {/* Hero */}
-      <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center justify-center px-6">
-
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center justify-center px-6 pt-28 pb-20 lg:pt-0 lg:pb-0">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -419,7 +418,7 @@ function Home() {
 
         }}
 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white"
+        className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 text-white"
 
       >
 
