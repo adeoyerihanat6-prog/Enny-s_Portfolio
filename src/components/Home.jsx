@@ -268,7 +268,7 @@
 
 
 // import heroVideo from "../assets/video/hero.mp4";
-import heroPoster from "../assets/images/poster.png";
+// import heroPoster from "../assets/images/poster.png";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { FiPlay, FiArrowDown } from "react-icons/fi";
