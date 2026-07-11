@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
-import logo from "../assets/images/enny.jpeg"; 
+import logo from "../assets/images/logo.jpeg"; 
 
 const navLinks = [
   
