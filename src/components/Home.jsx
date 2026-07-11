@@ -1,5 +1,7 @@
 import profile from "../assets/images/emma.jpeg";
 import { TypeAnimation } from "react-type-animation";
+import { motion } from "framer-motion";
+import { FiChevronDown } from "react-icons/fi";
 function Home() {
   return (
     <section
@@ -9,14 +11,23 @@ function Home() {
       {/* Background Video Placeholder */}
       <div className="absolute inset-0 bg-[#0D0D0D]"></div>
 
+      {/* <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+  <source src={heroVideo} type="video/mp4" />
+</video> */}
+
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/70"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/80" />
 
       {/* Hero Content */}
       <div className="relative z-10 max-w-7xl mx-auto min-h-screen px-6 lg:px-12 flex flex-col-reverse lg:flex-row items-center justify-center gap-16">
 
         {/* LEFT */}
-        <div className="flex-1 text-center lg:text-left">
+        <motion.div
+  initial={{ opacity: 0, x: -60 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 2.0 }}
+  className="flex-1 text-center lg:text-left"
+>
 
           <p className="uppercase tracking-[6px] text-[#EF4444] text-sm font-semibold mb-4">
             Creating Cinematic AI Experiences
@@ -65,10 +76,15 @@ function Home() {
 
           </div>
 
-        </div>
+        </motion.div>
 
         {/* RIGHT */}
-        <div className="flex-1 flex justify-center">
+        <motion.div
+  initial={{ opacity: 0, x: 60 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 1.0 }}
+  className="flex-1 flex justify-center"
+>
 
           <div className="relative">
 
@@ -76,17 +92,44 @@ function Home() {
             <div className="absolute inset-0 rounded-[35px] bg-[#EF4444]/20 blur-3xl"></div>
 
             {/* Image */}
-            <img
-              src={profile}
-              alt="Emmanuel"
-              className="relative w-[320px] sm:w-[380px] lg:w-[450px] rounded-[35px] border border-white/10 shadow-2xl object-cover"
-            />
+            <motion.img
+  animate={{
+    y: [0, -12, 0],
+  }}
+  transition={{
+    duration: 4,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  src={profile}
+  alt="Emmanuel"
+  className="relative w-[320px] sm:w-[380px] lg:w-[450px] rounded-[35px] border border-white/10 shadow-2xl object-cover"
+/>
 
           </div>
 
-        </div>
+        </motion.div>
+
+          <button
+  onClick={() => {
+    document.getElementById("work")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }}
+  className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center"
+>
+  <FiChevronDown className="text-4xl text-[#EF4444] scroll-indicator" />
+
+  <p className="text-xs uppercase tracking-[5px] text-gray-300 mt-2">
+    Scroll to explore
+  </p>
+</button>
 
       </div>
+
+    
+
+
     </section>
   );
 }

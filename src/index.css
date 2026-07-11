@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@keyframes floatArrow {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+}
+
+.scroll-indicator {
+  animation: floatArrow 2s ease-in-out infinite;
+}
