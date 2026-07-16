@@ -1,16 +1,85 @@
-# React + Vite
+# 🎬 Enny – AI Video Creator Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio website built to showcase Enny's expertise as an AI Video Creator. The website highlights services, featured projects, creative tools, and provides an easy way for potential clients to get in touch.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Modern and responsive design
+- Smooth scrolling navigation
+- Beautiful hero section
+- About section
+- Services showcase
+- Featured projects
+- Creative tools section
+- Contact form
+- Mobile-friendly layout
+- Fast performance
 
-## React Compiler
+## 🛠️ Built With
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React.js
+- Vite
+- Tailwind CSS
+- Framer Motion
+- React Icons
 
-## Expanding the ESLint configuration
+## 📁 Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+├── components/
+├── assets/
+├── pages/
+├── App.jsx
+└── main.jsx
+```
+
+## 🚀 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/adeoyerihanat6-prog/enny-portfolio.git
+```
+
+Navigate into the project:
+
+```bash
+cd enny-portfolio
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+## 📱 Responsive
+
+The website is fully responsive and optimized for:
+
+- Desktop
+- Tablet
+- Mobile
+
+## 📬 Contact
+
+Interested in working with Enny?
+
+Feel free to reach out through the contact section on the website.
+
+---
+
+Designed & Developed by **Adeoye Rihanat ❤️**
