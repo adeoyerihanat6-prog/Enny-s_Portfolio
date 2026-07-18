@@ -46,18 +46,18 @@ function Contact() {
 
     emailjs
       .send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        "service_7tci6o9",
+        "template_hpajmc8",
         {
           from_name: form.name,
           from_email: form.email,
           service: selected,
           message: form.message,
         },
-        "YOUR_PUBLIC_KEY"
+         "ftrvy5-rxatM1-C1H"
       )
       .then(() => {
-        alert("Message Sent Successfully!");
+        alert("🎉 Thanks! Your message has been sent successfully.");
 
         setForm({
           name: "",
@@ -67,9 +67,9 @@ function Contact() {
 
         setSelected("");
       })
-      .catch(() => {
-        alert("Something went wrong.");
-      });
+      .catch((error) => {
+       console.error(error);
+});
   };
 
   return (
