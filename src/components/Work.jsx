@@ -1,170 +1,323 @@
-import { motion } from "framer-motion";
-import { FiArrowUpRight, FiPlay } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiPlay, FiX, FiArrowUpRight } from "react-icons/fi";
 
-import work1 from "../assets/images/work1.png";
-import work2 from "../assets/images/work2.png";
-import work3 from "../assets/images/work3.png";
-import work4 from "../assets/images/work4.png";
+// Videos
+import techVideo from "../assets/videos/Tech Product Launch.mp4";
+import realEstateVideo from "../assets/videos/Luxury Real Estate campaign.mp4";
+import sciFiVideo from "../assets/videos/Sci-fi animation video.mp4";
+import brandVideo from "../assets/videos/Brand promotion Ads.mp4";
+import ugcVideo from "../assets/videos/UGC Skincare.mp4";
+import marketingVideo from "../assets/videos/Promotion marketing.mp4";
+import cinematicVideo from "../assets/videos/cinematic ai video.mp4";
 
 const projects = [
   {
-    title: "Luxury Perfume Campaign",
-    category: "Product Commercial",
-    image: work1,
-  },
-  {
-    title: "Fashion Brand Commercial",
-    category: "Fashion",
-    image: work2,
-  },
-  {
-    title: "AI UGC Advertisement",
-    category: "UGC",
-    image: work3,
-  },
-  {
     title: "Tech Product Launch",
     category: "Commercial",
-    image: work4,
+    video: techVideo,
+    portrait: false,
+  },
+  {
+    title: "Luxury Real Estate Campaign",
+    category: "Real Estate",
+    video: realEstateVideo,
+    portrait: false,
+  },
+  {
+    title: "Sci-fi Animation Video",
+    category: "AI Animation",
+    video: sciFiVideo,
+    portrait: false,
+  },
+  {
+    title: "Brand Promotion Ads",
+    category: "Marketing",
+    video: brandVideo,
+    portrait: false,
+  },
+  {
+    title: "UGC Skincare",
+    category: "AI UGC",
+    video: ugcVideo,
+    portrait: true,
+  },
+  {
+    title: "Promotion Marketing",
+    category: "Advertisement",
+    video: marketingVideo,
+    portrait: true,
+  },
+  {
+    title: "Cinematic AI Video",
+    category: "Cinematic",
+    video: cinematicVideo,
+    portrait: false,
   },
 ];
 
 function Work() {
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const openProject = (project) => {
+    setSelectedProject(project);
+  };
+
+  const closeProject = () => {
+    setSelectedProject(null);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        closeProject();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
-    <section
-      id="work"
-      className="relative overflow-hidden bg-[#111111] py-24 px-6">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-red-600/10 blur-[180px] rounded-full pointer-events-none"></div>
-      <div className="max-w-7xl mx-auto">
+    <>
+      <section id="work" className="bg-[#111111] py-24 px-6">
 
-        {/* Heading */}
+        <div className="max-w-7xl mx-auto">
 
-        <motion.div onClick={() => openProject(project)}
-         whileTap={{ scale: 0.97 }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: .7 }}
-          viewport={{ once: true }}
-          className="text-center mb-16 group cursor-pointer"
-        >
-          <p className="uppercase tracking-[6px] text-red-500 text-sm font-semibold">
-            Featured Work
-          </p>
+          {/* Heading */}
 
-          <h2 className="text-4xl md:text-5xl font-bold text-white mt-4">
-            Selected Projects
-          </h2>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: .7 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <p className="uppercase tracking-[6px] text-red-500 text-sm font-semibold">
+              Featured Work
+            </p>
 
-          <p className="text-gray-400 max-w-2xl mx-auto mt-6">
-            A collection of AI-powered commercials, product advertisements and
-            cinematic storytelling crafted to help brands stand out.
-          </p>
-      <div className="w-24 h-[2px] bg-red-500 mx-auto mt-8 rounded-full"></div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4">
+              Selected Projects
+            </h2>
 
-        </motion.div>
-        {/* Cards */}
+            <p className="text-gray-400 max-w-2xl mx-auto mt-6 leading-8">
+              Explore a collection of AI-generated commercials, UGC campaigns,
+              cinematic storytelling and brand advertisements crafted for modern
+              businesses.
+            </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          </motion.div>
 
-          {projects.map((project, index) => (
+          {/* Projects */}
 
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: .6,
-                delay: index * .15,
-              }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              className=" group relative overflow-hidden rounded-3xl bg-[#181818] border border-white/10 transition-all duration-500 hover:border-red-500/40 hover:shadow-2xl hover:shadow-red-500/20">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
 
-              {/* Image */}
+            {projects.map((project, index) => (
 
-              <div className="relative overflow-hidden">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: .6,
+                  delay: index * .1,
+                }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8 }}
+                className="group rounded-3xl overflow-hidden bg-[#181818] border border-white/10 shadow-xl"
+              >
 
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-[320px] object-cover transition duration-1000 group-hover:scale-110"
-                />
+                {/* Video Preview */}
 
-                {/* Overlay */}
+                <div
+                  onClick={() => openProject(project)}
+                  className="relative cursor-pointer"
+                >
 
-                <div className=" absolute inset-0 bg-black/40 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition duration-500 flex items-center justify-center">
+                  <video
+                    src={project.video}
+                    muted
+                    loop
+                    playsInline
+                    autoPlay
+                    className="w-full h-[300px] object-cover group-hover:scale-105 transition duration-700"
+                  />
 
-                  <div className="w-16 h-16 rounded-full backdrop-blur-md bg-white/20 border border-white/20 flex items-center justify-center">
+                  {/* Overlay */}
 
-                    <FiPlay
-                      size={28}
-                      className="text-white ml-1"
-                    />
+                  <div className="absolute inset-0 bg-black/45 flex items-center justify-center transition group-hover:bg-black/30">
+
+                    <div className="w-16 h-16 rounded-full bg-red-500 flex items-center justify-center shadow-xl">
+
+                      <FiPlay
+                        className="text-white ml-1"
+                        size={28}
+                      />
+
+                    </div>
 
                   </div>
 
                 </div>
 
-              </div>
+                {/* Card Content */}
 
-              {/* Content */}
+                <div className="p-7">
 
-              <div className="p-8">
+                  <span className="inline-block bg-red-500/10 text-red-500 px-4 py-2 rounded-full text-sm mb-5">
 
-                <span className="inline-block text-sm backdrop-blur-xl border border-red-500/20 text-red-500 px-4 py-2 rounded-full mb-5">
-                  {project.category}
-                </span>
+                    {project.category}
 
-                <h3 className="text-2xl text-white font-semibold">
-                  {project.title}
-                </h3>
+                  </span>
 
-                <button className=" opacity-100 md:opacity-0 md:group-hover:opacity-100 mt-6 flex items-center gap-2 text-red-500 font-medium group-hover:gap-4 transition-all">
-                  View Project
+                  <h3 className="text-2xl text-white font-semibold">
 
-                  <FiArrowUpRight />
+                    {project.title}
 
-                </button>
+                  </h3>
+
+                  <button
+                    onClick={() => openProject(project)}
+                    className="mt-6 flex items-center gap-2 text-red-500 font-medium hover:gap-4 transition-all"
+                  >
+                    View Project
+
+                    <FiArrowUpRight />
+
+                  </button>
+
+                </div>
+
+              </motion.div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+            {/* Video Modal */}
+
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeProject}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 30 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 30 }}
+              transition={{ duration: 0.35 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-6xl bg-[#151515] rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
+            >
+              {/* Close Button */}
+
+              <button
+                onClick={closeProject}
+                className="absolute top-5 right-5 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-red-500 transition flex items-center justify-center"
+              >
+                <FiX size={22} className="text-white" />
+              </button>
+
+              <div className="grid lg:grid-cols-2">
+
+                {/* Video */}
+
+                <div className="bg-black flex items-center justify-center p-6">
+
+                  <video
+                    src={selectedProject.video}
+                    controls
+                    autoPlay
+                    playsInline
+                    className={
+                      selectedProject.portrait
+                        ? "h-[70vh] rounded-2xl object-contain"
+                        : "w-full rounded-2xl object-cover"
+                    }
+                  />
+
+                </div>
+
+                {/* Project Details */}
+
+                <div className="p-8 lg:p-12 flex flex-col justify-center">
+
+                  <span className="inline-block w-fit bg-red-500/10 text-red-500 px-4 py-2 rounded-full text-sm mb-6">
+
+                    {selectedProject.category}
+
+                  </span>
+
+                  <h2 className="text-4xl font-bold text-white mb-6">
+
+                    {selectedProject.title}
+
+                  </h2>
+
+                  <p className="text-gray-400 leading-8 mb-8">
+
+                    This project showcases Emmanuel's expertise in AI-powered
+                    video production, cinematic storytelling, commercial
+                    advertising, and high-converting content designed for brands,
+                    businesses, and social media campaigns.
+
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-5">
+
+                    <div className="bg-[#1D1D1D] rounded-2xl p-5">
+
+                      <h4 className="text-red-500 font-semibold mb-2">
+                        Category
+                      </h4>
+
+                      <p className="text-gray-300">
+                        {selectedProject.category}
+                      </p>
+
+                    </div>
+
+                    <div className="bg-[#1D1D1D] rounded-2xl p-5">
+
+                      <h4 className="text-red-500 font-semibold mb-2">
+                        Created With
+                      </h4>
+
+                      <p className="text-gray-300">
+                        AI Tools
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                  <button
+                    onClick={closeProject}
+                    className="mt-10 px-8 py-4 rounded-full bg-red-500 hover:bg-red-600 transition text-white font-semibold"
+                  >
+                    Close Project
+                  </button>
+
+                </div>
 
               </div>
 
             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-          ))}
-
-        </div>
-
-        <div className="w-24 h-[2px] bg-red-500 rounded-full mx-auto mt-20 mb-16"></div>
-
-        {/* CTA */}
-
-<motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8 }}
-  viewport={{ once: true }}
-  className="mt-24 text-center"
->
-  <h3 className="text-3xl md:text-4xl font-bold text-white">
-    Have a project in mind?
-  </h3>
-
-  <p className="mt-4 text-gray-400 max-w-2xl mx-auto leading-8">
-    Whether it's a product commercial, AI UGC campaign, or a cinematic brand
-    story, let's create visuals that leave a lasting impression.
-  </p>
-
-  <a
-    href="#contact"
-    className="inline-flex items-center gap-3 mt-10 bg-red-500 hover:bg-red-600 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30"
-  >
-    Start Your Project
-    <FiArrowUpRight size={20} />
-  </a>
-</motion.div>
-
-      </div>
-    </section>
+    </>
   );
 }
 

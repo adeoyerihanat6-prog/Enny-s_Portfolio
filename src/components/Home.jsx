@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { FiPlay, FiArrowDown } from "react-icons/fi";
+import backgroundVideo from "../assets/videos/Background.mp4";
 
 function Home() {
   return (
@@ -10,19 +11,19 @@ function Home() {
       className="relative min-h-[100svh] overflow-hidden bg-black"
     >
       {/* Background Video */}
-      {/* <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster={heroPoster}
-        className="absolute inset-0 h-full w-full object-cover"
-      >
-        <source src={heroVideo} type="video/mp4" />
-      </video> */}
+     <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+  className="absolute inset-0 w-full h-full object-cover">
+
+  <source src={backgroundVideo} type="video/mp4" />
+</video>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70" />
+     <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/90" />
 
       {/* Red Glow */}
       <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/10 blur-[180px]" />
@@ -52,7 +53,7 @@ function Home() {
 
             <TypeAnimation
               sequence={[
-                "Baale of Rihanna's heart 1", 
+                "Video Marketing Specialist", 
                 2000,
                 "AI UGC Creator",
                 2000,
