@@ -3,13 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiPlay, FiX, FiArrowUpRight } from "react-icons/fi";
 
 // Videos
-import techVideo from "../assets/videos/Tech Product Launch.mp4";
-import realEstateVideo from "../assets/videos/Luxury Real Estate campaign.mp4";
-import sciFiVideo from "../assets/videos/Sci-fi animation video.mp4";
-import brandVideo from "../assets/videos/Brand promotion Ads.mp4";
-import ugcVideo from "../assets/videos/UGC Skincare.mp4";
-import marketingVideo from "../assets/videos/Promotion marketing.mp4";
-import cinematicVideo from "../assets/videos/cinematic ai video.mp4";
+import techVideo from "../assets/videos/tech-product-launch.mp4";
+import realEstateVideo from "../assets/videos/luxury-real-estate-campaign.mp4";
+import sciFiVideo from "../assets/videos/sci-fi-animation-video.mp4";
+import brandVideo from "../assets/videos/brand-promotion-ads.mp4";
+import ugcVideo from "../assets/videos/ugc-skincare.mp4";
+import marketingVideo from "../assets/videos/promotion-marketing.mp4";
+import cinematicVideo from "../assets/videos/cinematic-ai-video.mp4";
 
 const projects = [
   {
