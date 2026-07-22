@@ -52,7 +52,7 @@ function Home() {
 
             <TypeAnimation
               sequence={[
-                "Commercial Director",
+                "Baale of Rihanna's heart 1", 
                 2000,
                 "AI UGC Creator",
                 2000,
