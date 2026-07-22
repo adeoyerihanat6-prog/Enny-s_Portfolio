@@ -21,7 +21,7 @@ const process = [
     title: "Generate",
     description:
       "Using advanced AI platforms, I transform ideas into cinematic visuals and high-quality video concepts.",
-    tools: ["Veo 3", "Runway", "Kling AI"],
+    tools: ["Veo 3", "Runway", "Kling AI", "seedance 2.0"],
   },
   {
     icon: <FiEdit size={36} />,
