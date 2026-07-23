@@ -8,6 +8,7 @@ import backgroundVideo from "../assets/videos/Background.mp4";
 function Home() {
   const [showShowreel, setShowShowreel] = useState(false);
 
+  // Prevent scrolling when modal is open & listen for keydown events
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "Escape") {
@@ -15,19 +16,27 @@ function Home() {
       }
     };
 
+    if (showShowreel) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
     window.addEventListener("keydown", handleKey);
 
-    return () => window.removeEventListener("keydown", handleKey);
-  }, []);
+    return () => {
+      window.removeEventListener("keydown", handleKey);
+      document.body.style.overflow = "unset";
+    };
+  }, [showShowreel]);
 
   return (
     <>
       <section
         id="home"
-        className="relative min-h-[100svh] overflow-hidden bg-black"
+        className="relative min-h-[100svh] overflow-hidden bg-black flex items-center justify-center"
       >
         {/* Background Video */}
-
         <video
           autoPlay
           muted
@@ -40,36 +49,33 @@ function Home() {
         </video>
 
         {/* Overlay */}
-
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/90" />
 
         {/* Red Glow */}
+        <div className="absolute left-1/2 top-1/2 h-[350px] w-[350px] sm:h-[700px] sm:w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/10 blur-[120px] sm:blur-[180px] pointer-events-none" />
 
-        <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/10 blur-[180px]" />
-
-        {/* Hero */}
-
-        <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center justify-center px-6 pt-28 pb-20">
-
+        {/* Hero Content */}
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl items-center justify-center px-4 sm:px-6 pt-24 pb-16">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.8 }}
             className="max-w-4xl text-center"
           >
-            <p className="mb-5 uppercase tracking-[7px] text-red-500 text-sm font-semibold">
+            <p className="mb-4 sm:mb-5 uppercase tracking-[4px] sm:tracking-[7px] text-red-500 text-xs sm:text-sm font-semibold">
               Creating Cinematic AI Experiences
             </p>
 
-            <h1 className="text-white font-black leading-none text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+            <h1 className="text-white font-black leading-none text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight">
               Emmanuel
             </h1>
 
-            <h2 className="mt-6 text-red-500 font-semibold text-2xl md:text-3xl">
+            <h2 className="mt-4 sm:mt-6 text-red-500 font-semibold text-xl sm:text-2xl md:text-3xl">
               AI Video Creator &
             </h2>
 
-            <div className="mt-3 h-12">
+            {/* TypeAnimation Container with fixed responsive height to prevent layout shift */}
+            <div className="mt-2 sm:mt-3 h-10 sm:h-12 flex items-center justify-center">
               <TypeAnimation
                 sequence={[
                   "Video Marketing Specialist",
@@ -85,114 +91,103 @@ function Home() {
                 ]}
                 speed={45}
                 repeat={Infinity}
-                className="text-white text-xl md:text-2xl font-semibold"
+                className="text-white text-lg sm:text-xl md:text-2xl font-semibold"
               />
             </div>
 
-            <p className="mx-auto mt-8 max-w-2xl text-gray-300 leading-8 text-lg">
+            <p className="mx-auto mt-6 sm:mt-8 max-w-2xl text-gray-300 leading-relaxed sm:leading-8 text-base sm:text-lg">
               I create cinematic AI commercials, product ads and social
-              content that help brands capture attention, build trust and
-              drive conversions.
+              content that help brands capture attention, build trust and drive
+              conversions.
             </p>
 
-            {/* Buttons */}
-
-            <div className="mt-12 flex flex-col sm:flex-row gap-5 justify-center">
-
+            {/* Call to Action Buttons */}
+            <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full max-w-md sm:max-w-none mx-auto">
               <motion.a
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: .95 }}
+                whileTap={{ scale: 0.95 }}
                 href="#work"
-                className="rounded-full bg-red-500 px-8 py-4 font-semibold text-white hover:bg-red-600 transition"
+                className="w-full sm:w-auto text-center rounded-full bg-red-500 px-8 py-3.5 sm:py-4 font-semibold text-white hover:bg-red-600 transition shadow-lg shadow-red-500/20"
               >
                 View My Work
               </motion.a>
 
               <motion.button
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: .95 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setShowShowreel(true)}
-                className="flex items-center justify-center gap-2 rounded-full border border-red-500 bg-red-500/10 px-8 py-4 font-semibold text-white backdrop-blur-md hover:bg-red-500/20 transition"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full border border-red-500/50 bg-red-500/10 px-8 py-3.5 sm:py-4 font-semibold text-white backdrop-blur-md hover:bg-red-500/20 transition"
               >
-                <FiPlay />
+                <FiPlay size={18} />
                 Watch Showreel
               </motion.button>
 
               <motion.a
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: .95 }}
+                whileTap={{ scale: 0.95 }}
                 href="#contact"
-                className="rounded-full border border-white/20 px-8 py-4 font-semibold text-white backdrop-blur-md hover:border-red-500 transition"
+                className="w-full sm:w-auto text-center rounded-full border border-white/20 px-8 py-3.5 sm:py-4 font-semibold text-white backdrop-blur-md hover:border-red-500 transition"
               >
                 Let's Talk
               </motion.a>
-
             </div>
-
           </motion.div>
-
         </div>
 
         {/* Scroll Indicator */}
-
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{
             duration: 2,
             repeat: Infinity,
           }}
-          className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 text-white"
+          className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 hover:text-white transition"
         >
-          <FiArrowDown size={28} />
+          <a href="#work" aria-label="Scroll down">
+            <FiArrowDown size={26} />
+          </a>
         </motion.div>
-
       </section>
 
       {/* SHOWREEL MODAL */}
-
       <AnimatePresence>
         {showShowreel && (
-
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setShowShowreel(false)}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
           >
-
             <motion.div
-              initial={{ scale: .9, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: .9, opacity: 0 }}
-              transition={{ duration: .3 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-6xl rounded-3xl overflow-hidden border border-white/10 bg-[#111111]"
+              className="relative w-full max-w-5xl rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 bg-[#111111] shadow-2xl"
             >
-
-              {/* Close */}
-
+              {/* Close Button */}
               <button
                 onClick={() => setShowShowreel(false)}
-                className="absolute top-5 right-5 z-20 w-11 h-11 rounded-full bg-black/70 hover:bg-red-500 transition flex items-center justify-center"
+                aria-label="Close showreel modal"
+                className="absolute top-3 right-3 sm:top-5 sm:right-5 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/70 hover:bg-red-500 transition flex items-center justify-center border border-white/10 text-white"
               >
-                <FiX className="text-white" size={22} />
+                <FiX size={20} />
               </button>
 
               {/* Video */}
-
-              <video
-                src={backgroundVideo}
-                controls
-                autoPlay
-                playsInline
-                className="w-full max-h-[85vh] object-contain bg-black"
-              />
-
+              <div className="bg-black flex items-center justify-center">
+                <video
+                  src={backgroundVideo}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full max-h-[80vh] sm:max-h-[85vh] object-contain bg-black"
+                />
+              </div>
             </motion.div>
-
           </motion.div>
-
         )}
       </AnimatePresence>
     </>
